@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>喵喵喵</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f8f7f3;--ink:#171714;--muted:#77736c;--line:color-mix(in srgb,var(--ink) 15%,transparent);--surface:color-mix(in srgb,var(--bg) 94%,var(--ink) 6%);--body:"Noto Serif SC","Songti SC","STSong",serif;--weight:400;--size:16px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:400;transition:background .3s,color .3s}button{font:inherit;color:inherit}
+    .word-count{position:fixed;z-index:20;left:clamp(16px,3vw,42px);top:clamp(16px,3vw,34px);height:42px;display:flex;align-items:center;padding:0 15px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);font-family:"Noto Sans SC",sans-serif;font-size:11px;letter-spacing:.04em;white-space:nowrap}
+    .toolbar{position:fixed;z-index:20;right:clamp(16px,3vw,42px);top:clamp(16px,3vw,34px);display:flex;align-items:center;gap:8px}.round,.notes-button{height:42px;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);cursor:pointer}.round{width:42px;border-radius:50%;display:grid;place-items:center;font-family:"Noto Sans SC",sans-serif;font-size:15px}.notes-button{border-radius:999px;padding:0 15px;font-family:"Noto Sans SC",sans-serif;font-size:11px;letter-spacing:.12em}
+    .panel{position:fixed;z-index:30;right:16px;top:72px;width:min(350px,calc(100vw - 32px));padding:22px;background:color-mix(in srgb,var(--bg) 96%,transparent);border:1px solid var(--line);box-shadow:0 18px 70px #0002;backdrop-filter:blur(18px);opacity:0;transform:translateY(-10px);pointer-events:none;transition:.2s}.panel.open{opacity:1;transform:none;pointer-events:auto}.panel-head{display:flex;align-items:center;justify-content:space-between;font-family:"Noto Sans SC",sans-serif;font-size:12px;letter-spacing:.12em}.close{border:0;background:none;padding:4px;cursor:pointer}.group{margin-top:23px}.label{display:block;margin-bottom:10px;color:var(--muted);font-family:"Noto Sans SC",sans-serif;font-size:11px}.options{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.font-options{grid-template-columns:repeat(2,1fr)}.sizes{grid-template-columns:repeat(3,1fr)}.choice{border:1px solid var(--line);background:none;padding:10px 4px;cursor:pointer;font-family:"Noto Sans SC",sans-serif;font-size:12px}.choice.active{background:var(--ink);color:var(--bg)}.palettes{display:grid;grid-template-columns:1fr 1fr;gap:7px}.palette{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:none;padding:9px;cursor:pointer;font-family:"Noto Sans SC",sans-serif;font-size:11px}.palette.active{outline:2px solid color-mix(in srgb,var(--ink) 65%,transparent);outline-offset:-2px}.swatch{width:21px;height:21px;border-radius:50%;border:1px solid #0002;background:linear-gradient(135deg,var(--a) 50%,var(--b) 50%)}
+    main{width:min(820px,calc(100% - 44px));margin:0 auto;font-weight:var(--weight);padding:clamp(110px,16vh,190px) 0 20vh;font-size:var(--size);line-height:2.05;letter-spacing:.025em}.preface{margin-bottom:22px;padding:28px 0 30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.tag-region{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}.tag-illustration{display:flex;justify-content:flex-start;margin:0 0 clamp(75px,11vh,130px)}.tag-illustration img{display:block;width:min(300px,82vw);height:auto;image-rendering:pixelated}.tag{display:inline-block;padding:5px 9px;border-radius:999px;background:var(--ink);color:var(--bg);font-family:"Noto Sans SC",sans-serif;font-size:11px;line-height:1.55;letter-spacing:.08em}.section-label{display:block;margin-bottom:18px;color:var(--muted);font-family:"Noto Sans SC",sans-serif;font-size:11px;letter-spacing:.22em}.preface p{margin:0;text-indent:0;font-size:.82em;line-height:1.9;color:color-mix(in srgb,var(--ink) 82%,var(--muted))}
+    article p{margin:0 0 2.5em;text-indent:2em;white-space:pre-wrap;overflow-wrap:anywhere}article ruby{ruby-position:over}article rt{color:var(--muted);font-family:"Noto Sans SC",sans-serif;font-size:.46em;line-height:1;letter-spacing:.12em;text-indent:0}.before-article-image{margin-bottom:6.15em!important}.article-image-button{display:block;width:min(360px,70%);margin:0 auto 2.5em;padding:0;overflow:hidden;border:0;border-radius:14px;background:none;box-shadow:0 5px 22px #0002;cursor:zoom-in}.article-image{display:block;width:100%;height:auto}.image-lightbox{position:fixed;z-index:100;inset:0;display:grid;place-items:center;padding:28px;background:#000c;backdrop-filter:blur(5px)}.image-lightbox img{display:block;max-width:min(92vw,1100px);max-height:88vh;width:auto;height:auto;border-radius:14px;box-shadow:0 18px 80px #0008}.image-lightbox-close{position:fixed;top:18px;right:20px;width:42px;height:42px;border:1px solid #fff5;border-radius:50%;background:#181818cc;color:#fff;font-family:"Noto Sans SC",sans-serif;font-size:22px;line-height:1;cursor:pointer}.opening-spacer{padding-top:8.2em}.article-title{margin:5em 0!important;text-align:center;text-indent:0!important;font-size:calc(1em + 4px);font-weight:600;letter-spacing:.16em}.six-line-break{margin-top:12.3em!important}.three-line-break{margin-top:6.15em!important}.case-table{width:100%;margin:0 0 2.5em;border-collapse:collapse;font-size:.95em}.case-table th,.case-table td{border:1px solid var(--line);padding:.65em .9em;text-align:left;vertical-align:top}.case-table th{width:7.5em;background:var(--surface);font-family:"Noto Sans SC",sans-serif;font-weight:500;white-space:nowrap}.loading{text-indent:0!important;color:var(--muted);font-family:"Noto Sans SC",sans-serif;font-size:.8em}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+  
+    @media(max-width:640px){.word-count{top:14px;left:14px;height:40px;padding:0 12px;font-size:10px}.toolbar{top:14px;right:14px}.round{height:40px;width:40px}main{width:calc(100% - 40px);padding-top:100px;line-height:1.95;letter-spacing:.015em}.preface{margin-bottom:18px;padding:24px 0}.panel{top:62px}}
+    .panel{max-height:calc(100dvh - 90px);overflow:auto}
+    button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  </style>
+</head>
+<body>
+  <div class="word-count" aria-live="polite">当前字数：<span id="wordCountValue">3</span></div>
+  <div class="toolbar"><button class="round" id="settingsButton" aria-label="阅读设置" aria-controls="settingsPanel" aria-expanded="false">◐</button></div>
+  <aside class="panel" id="settingsPanel" aria-label="阅读设置" inert>
+    <div class="panel-head"><span>阅读设置</span><button class="close" data-close>关闭</button></div>
+    <div class="group"><span class="label">字体</span><div class="options font-options"><button class="choice active" data-font="serif">思源宋体</button><button class="choice" data-font="sans">思源黑体</button><button class="choice" data-font="light">苹方细体</button><button class="choice" data-font="system">手机系统</button></div></div>
+    <div class="group"><span class="label">字号</span><div class="options sizes"><button class="choice" data-size="12">一咪咪</button><button class="choice" data-size="14">特小</button><button class="choice active" data-size="16">小</button><button class="choice" data-size="18">适中</button><button class="choice" data-size="20">大</button><button class="choice" data-size="23">特大</button></div></div>
+    <div class="group"><span class="label">底色与文字</span><div class="palettes" id="palettes"></div></div>
+  </aside>
+  <main>
+    <section class="preface" aria-labelledby="prefaceTitle"><span class="section-label" id="prefaceTitle">有话说</span><p>今年死了明年就不会死——莎士比亚</p></section>
+    <article id="article" aria-label="正文"><p class="opening-spacer">喵喵喵</p></article>
+  </main>
+  <script src="reader.js"></script>
+</body>
+</html>
